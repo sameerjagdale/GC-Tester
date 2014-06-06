@@ -78,8 +78,8 @@ printf("Shared Array time = %f \n",sum/10);
 }
 VrArrayF64 testStruct(int iter) {
 	const int numel = 1000000;
-	double *data = static_cast<double*>(GC_MALLOC(sizeof(double)*numel));
-	int * dims = static_cast<int*>(GC_MALLOC(sizeof(int)*2));
+	shared_array<double> data(new double[numel]);
+	shared_array<int>dims(new int[2]);
 	dims[0] = 1000;
 	dims[1] = 1000;
 	VrArrayF64 A(data,dims,2);
